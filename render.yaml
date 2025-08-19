@@ -1,10 +1,6 @@
 services:
   - type: web
-    name: foodvision-ai
+    name: ai-vision-classifier
     env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.9.18
+    buildCommand: "pip install -r requirements.txt && python download.py"
+    startCommand: "gunicorn app:app"
