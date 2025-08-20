@@ -1,8 +1,3 @@
-"""
-Download a better pre-trained Food-101 model for improved accuracy.
-Run this script once to download the model weights.
-"""
-
 import torch
 import torch.nn as nn
 from torchvision import models
@@ -29,7 +24,7 @@ def download_file(url, filename):
 
 def create_better_model():
     """Create a better Food-101 model"""
-    print("🚀 Creating enhanced Food-101 model...")
+    print("Creating enhanced Food-101 model...")
     
     # Use EfficientNet for better accuracy
     try:
@@ -39,7 +34,7 @@ def create_better_model():
             nn.Dropout(0.2),
             nn.Linear(model.classifier[1].in_features, 101)
         )
-        print("✅ Using EfficientNet-B0 backbone")
+        print("Using EfficientNet-B0 backbone")
     except:
         # Fallback to ResNet50
         model = models.resnet50(pretrained=True)
@@ -47,13 +42,13 @@ def create_better_model():
             nn.Dropout(0.5),
             nn.Linear(model.fc.in_features, 101)
         )
-        print("✅ Using ResNet50 backbone")
+        print("Using ResNet50 backbone")
     
     return model
 
 def download_food101_weights():
     """Download better Food-101 pre-trained weights"""
-    print("🔄 Attempting to download Food-101 weights...")
+    print("Attempting to download Food-101 weights...")
     
     # URLs for potential Food-101 models (try multiple sources)
     model_urls = [
@@ -71,12 +66,12 @@ def download_food101_weights():
     
     for model_info in model_urls:
         try:
-            print(f"📥 Trying to download {model_info['name']}...")
+            print(f"Trying to download {model_info['name']}...")
             download_file(model_info['url'], model_info['filename'])
-            print(f"✅ Downloaded {model_info['name']} successfully!")
+            print(f"Downloaded {model_info['name']} successfully!")
             return model_info['filename']
         except Exception as e:
-            print(f"❌ Failed to download {model_info['name']}: {e}")
+            print(f"Failed to download {model_info['name']}: {e}")
             if os.path.exists(model_info['filename']):
                 os.remove(model_info['filename'])
     
@@ -84,7 +79,7 @@ def download_food101_weights():
 
 def create_enhanced_food_model():
     """Create an enhanced model with better feature extraction"""
-    print("🔧 Creating enhanced Food-101 model...")
+    print("Creating enhanced Food-101 model...")
     
     # Use a more sophisticated architecture
     class EnhancedFoodClassifier(nn.Module):
@@ -110,35 +105,35 @@ def create_enhanced_food_model():
     
     # Save the enhanced model
     torch.save(model.state_dict(), 'enhanced_food101_model.pth')
-    print("✅ Enhanced model created and saved!")
+    print("Enhanced model created and saved!")
     
     return model
 
 def main():
-    print("🍕 Food-101 Model Setup")
-    print("=" * 50)
+    print("Food-101 Model Setup")
+    
     
     # Check if we already have a good model
     if os.path.exists('food101_model.pth'):
-        print("✅ food101_model.pth already exists!")
+        print("food101_model.pth already exists!")
         return
     
     # Try to download pre-trained weights
     downloaded_file = download_food101_weights()
     
     if downloaded_file:
-        print(f"🎉 Successfully downloaded: {downloaded_file}")
+        print(f"Successfully downloaded: {downloaded_file}")
         # Rename to standard name
         if downloaded_file != 'food101_model.pth':
             os.rename(downloaded_file, 'food101_model.pth')
     else:
-        print("📦 Creating enhanced model locally...")
+        print("Creating enhanced model locally...")
         create_enhanced_food_model()
         if os.path.exists('enhanced_food101_model.pth'):
             os.rename('enhanced_food101_model.pth', 'food101_model.pth')
     
-    print("\n🎯 Setup complete! Your model should now have better accuracy.")
-    print("💡 Run your Flask app: python app.py")
+    print("\nSetup complete! Your model should now have better accuracy.")
+    print("Run your Flask app: python app.py")
 
 if __name__ == "__main__":
     main()
