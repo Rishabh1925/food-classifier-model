@@ -35,17 +35,73 @@ This project combines cutting-edge deep learning models with a modern web interf
 
 ## Installation & Setup
 
+### Method 1: Using Git (Recommended)
+
+If you have Git installed on your system:
+
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Rishabh1925/food-classifier-model.git
 cd foodvision-ai
 ```
 
+### Method 2: Without Git (Manual Download)
+
+If you don't have Git installed:
+
+1. **Download the project manually**
+   - Go to: https://github.com/Rishabh1925/food-classifier-model
+   - Click the green "Code" button
+   - Select "Download ZIP"
+   - Extract the ZIP file to your desired location
+   - Open terminal/command prompt and navigate to the extracted folder:
+   ```bash
+   cd path/to/extracted/food-classifier-model-main
+   ```
+
+### Method 3: Install Git (One-time setup)
+
+**For Windows:**
+- Download Git from: https://git-scm.com/download/windows
+- Run the installer and follow the setup wizard
+- Restart your command prompt/terminal
+- Then use Method 1 above
+
+**For macOS:**
+```bash
+# Using Homebrew (if you have it)
+brew install git
+
+# Or download from: https://git-scm.com/download/mac
+```
+
+**For Linux (Ubuntu/Debian):**
+```bash
+sudo apt update
+sudo apt install git
+```
+
+**For Linux (CentOS/RHEL/Fedora):**
+```bash
+sudo yum install git
+# OR for newer versions
+sudo dnf install git
+```
+
+---
+
+### Continue with setup (after using any method above):
+
 2. **Create and activate virtual environment**
 ```bash
 python -m venv env
-source env/bin/activate  # Linux/macOS
-# env\Scripts\activate     # Windows
+
+# Activate virtual environment:
+# For Windows:
+env\Scripts\activate
+
+# For macOS/Linux:
+source env/bin/activate
 ```
 
 3. **Install dependencies**
@@ -95,22 +151,6 @@ ai-vision-classifier/
 └── README.md           # This file
 ```
 
-## Production Deployment
-
-### Using Gunicorn
-```bash
-gunicorn -w 4 -b 0.0.0.0:8000 app:app
-```
-
-### Docker Setup
-```bash
-# Build image
-docker build -t ai-vision-classifier .
-
-# Run container
-docker run -p 5000:5000 ai-vision-classifier
-```
-
 ## Web Interface
 
 The application features a modern, responsive design with:
@@ -152,6 +192,26 @@ python download.py --retry 3 --verbose
 python app.py --port 8080
 ```
 
+**Virtual Environment Issues:**
+```bash
+# If you get permission errors or path issues
+python -m pip install --user virtualenv
+python -m virtualenv env
+```
+
+**Python Not Found (Windows):**
+- Make sure Python is added to your PATH
+- Try using `python3` or `py` instead of `python`
+- Reinstall Python and check "Add to PATH" during installation
+
+## Alternative Download Methods
+
+If you're having trouble with any of the above methods:
+
+1. **Direct ZIP Download**: Download the project as ZIP from the GitHub repository
+2. **GitHub CLI**: `gh repo clone Rishabh1925/food-classifier-model`
+3. **Browser Download**: Save the repository files directly from GitHub's web interface
+
 ## Contributing
 
 1. Fork the project
@@ -166,5 +226,5 @@ Distributed under the MIT License. See `LICENSE` file for more information.
 
 ## Support
 
-- [**GitHub Issues**](https://github.com/yourusername/ai-vision-classifier/issues)
+- [**GitHub Issues**](https://github.com/Rishabh1925/food-classifier-model/issues)
 - [**Email**](rishabhranjansingh_mc24b06_019@dtu.ac.in)
