@@ -37,8 +37,8 @@ This project combines cutting-edge deep learning models with a modern web interf
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ai-vision-classifier.git
-cd ai-vision-classifier
+git clone https://github.com/Rishabh1925/food-classifier-model.git
+cd foodvision-ai
 ```
 
 2. **Create and activate virtual environment**
